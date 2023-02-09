@@ -9,7 +9,7 @@ pipeline {
     stage('Copy files to Target Host'){
         steps{
     sshagent(['jenkins-ec2-user-raj']) {
-       sh 'ssh -i /var/lib/jenkins/aws_key.pem -o StrictHostKeyChecking=no ec2-user@172.31.44.87'
+       sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.44.87'
        sh 'scp /var/lib/jenkins/workspace/demo-php-github/* ec2-user@172.31.44.87:/home/ec2-user/php'
     }
          }
