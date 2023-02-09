@@ -10,7 +10,7 @@ pipeline {
         steps{
     sshagent(['jenkins-ec2-user-raj']) {
        sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.44.87'
-       sh 'scp -rf /var/lib/jenkins/workspace/demo-php-github/* ec2-user@172.31.44.87:/var/www/html/'
+       sh 'scp -rp /var/lib/jenkins/workspace/demo-php-github/* ec2-user@172.31.44.87:/var/www/html/'
     }
          }
     }
