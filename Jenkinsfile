@@ -9,9 +9,11 @@ pipeline {
     stage('Copy files to Target Host'){
         steps{
     sshagent(['raja-ec2-user-php-bcci']) {
+       sh '#ssh -i /var/lib/jenkins/aws_key.pem -o StrictHostKeyChecking=no ec2-user@172.31.44.87'
+       sh '#scp /var/lib/jenkins/workspace/demo-php-github/* ec2-user@172.31.44.87:/home/ec2-user/php'
        sh 'ssh -i /var/lib/jenkins/aws_key.pem -o StrictHostKeyChecking=no ec2-user@172.31.44.87'
-       sh 'scp /var/lib/jenkins/workspace/demo-php-github/* ec2-user@172.31.44.87:/home/ec2-user/php'
-             }
+        sh 'ls -lrt ec2-user@172.31.44.87:/home/ec2-user/php'
+    }
          }
     }
 }
