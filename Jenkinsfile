@@ -9,7 +9,7 @@ pipeline {
     stage('Copy files to Target Host'){
         steps{
     sshagent(['raja-ec2-user-php-bcci']) {
-       sh 'ssh ec2-user@ec2-13-233-215-202.ap-south-1.compute.amazonaws.com'
+       sh 'ssh ec2-user@172.31.44.87'
        sh 'scp /var/lib/jenkins/workspace/phpbcci/* ec2-user@172.31.44.87:/home/ec2-user/php/'
              }
          }
