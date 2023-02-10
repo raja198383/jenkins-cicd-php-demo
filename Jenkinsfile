@@ -9,8 +9,8 @@ pipeline {
     stage('Copy files to Target Host'){
         steps{
     sshagent(['jenkins-ec2-user-raj']) {
-       sh 'ssh -o StrictHostKeyChecking=no ec2-user@172.31.44.87'
-       sh 'scp -rp /var/lib/jenkins/workspace/demo-php-github/* ec2-user@172.31.44.87:/var/www/html/'
+       sh 'ssh -o StrictHostKeyChecking=no ubuntu@ip-172-31-5-131'
+       sh 'scp -rp /var/lib/jenkins/workspace/demo-php-github/* ubuntu@ip-172-31-5-131:/var/www/html/'
     }
          }
     }
